@@ -1,3 +1,6 @@
+
+# NOTE: This needs to be thoroughly vetted and tested...
+
 ### Disclaimer:
 This project tries to extract the eBay Sell APIs into a dynamically built interface with helper functions and an intuitive RESTful methods.
 
