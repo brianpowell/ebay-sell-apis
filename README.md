@@ -1,9 +1,9 @@
 ### Disclaimer:
-This project tries to extract the eBay Sell APIs into a dnyamically build library with helper functions and iniative RESTful methods.
+This project tries to extract the eBay Sell APIs into a dynamically built interface with helper functions and an intuitive RESTful methods.
 
-The eBary APIs do not operate on a RESTful approach mixing things like POST with PUT, "create" "update" "delete" in URIs, and a whole bunch of other weird things that happen when you hammer are SOAP-based API into REST.
+The eBay APIs do not operate on a RESTful approach - mixing things like `POST` with `PUT`, `POST` with `DELETE`, "create" "update" "delete" operators in URIs, and a whole bunch of other weird things that happen when you hammer a SOAP-based API into REST.
 
-So... I attempted to make this bit cleaner by mapping the eBay Sell APIs into a dynamically generated interface that "attempts" to make RESTful sense. 
+So... I attempted to make this bit cleaner by mapping the eBay Sell APIs into a dynamically generated interface that "attempts" to make RESTful sense. Forgive, if you hate it.
 
 
 ### Example: 
