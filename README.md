@@ -10,7 +10,6 @@ So... I attempted to make this bit cleaner by mapping the eBay Sell APIs into a 
 ```javascript
 
 let eBay = require('ebay-sell-apis')
-let debug = require('debug')('ebay-sell-apis');
 
 let ebay = new eBay("{AEBY_TOKEN}", true);  // the true is a flag for the Sandbox environment
 ```
