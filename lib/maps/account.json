@@ -1,0 +1,61 @@
+{
+	"fulfillmentPolicy": {
+		"params": 		["fulfillment_policy_id"],
+		"query": 		["marketplace_id"],
+		"methods": {
+			"ALL": 		"/fulfillment_policy/{fulfillment_policy_id}"
+		},
+		"resources": {
+			"byName": 	{ 
+				"query": 		["marketplace_id", "name"],
+				"methods": {
+					"GET": 		"/fulfillment_policy/get_by_policy_name"
+				}
+			}
+		}
+	},
+	"program": false,
+	"paymentPolicy": {
+		"params": 		["payment_policy_id"],
+		"query": 		["marketplace_id"],
+		"methods": {
+			"ALL": 		"/payment_policy/{payment_policy_id}"
+		},
+		"resources": {
+			"byName": 	{ 
+				"query": 		["marketplace_id", "name"],
+				"methods": {
+					"GET": 		"/payment_policy/get_by_policy_name"
+				}
+			}
+		}
+	},
+	"privileges": {
+		"params": 		[],
+		"methods": {
+			"GET": 		"/privilege"
+		}
+	},
+	"returnPolicy": {
+		"params": 		["return_policy_d"],
+		"query": 		["marketplace_id"],
+		"methods": {
+			"ALL": 		"/return_policy/{return_policy_d}"
+		},
+		"resources": {
+			"byName": 	{ 
+				"query": 		["marketplace_id", "name"],
+				"methods": {
+					"GET": 		"/return_policy/get_by_policy_name"
+				}
+			}
+		}
+	},
+	"salesTax": {
+		"params": 		["country_code", "jurisdiction_id"],
+		"query": 		["country_code"],
+		"methods": {
+			"ALL": 		"/sales_tax/{country_code}/{jurisdiction_id}"
+		}
+	}
+}

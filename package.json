@@ -1,0 +1,17 @@
+{
+  "name": "ebay-sell-apis",
+  "version": "1.0.0",
+  "description": "Sell APIs for eBay Integrations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian Powell",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.2",
+    "debug": "^2.3.3",
+    "lodash": "^4.17.2",
+    "request": "^2.79.0"
+  }
+}

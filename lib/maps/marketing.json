@@ -1,0 +1,78 @@
+{
+	"ad": {
+		"params": 		["campaign_id", "ad_id"],
+		"query": 		["campaign_id", "listing_ids", "limit", "offset"],
+		"body": 		["bidPercentage", "listingId"],
+		"methods": {
+			"GET": 		"/ad_campaign/{campaign_id}/ad/{ad_id}",
+			"POST": 	"/ad_campaign/{campaign_id}/ad",
+			"PUT": 		"/ad_campaign/{campaign_id}/ad/{ad_id}/update_bid",
+			"DELETE": 	"/ad_campaign/{campaign_id}/ad/{ad_id}"
+		},
+		"fakeMethods": {
+			"PUT": "POST"
+		},
+		"resources": {
+			"byInventoryRef": {
+				"params": 	["campaign_id", "inventory_references"],
+				"query":    ["inventoryReferenceId", "inventoryReferenceType"],
+				"body": 	["bidPercentage", "inventoryReferenceId", "inventoryReferenceType"],
+				"methods": {
+					"GET":		"/ad_campaign/{campaign_id}/get_ads_by_inventory_reference",
+					"POST": 	"/ad_campaign/{campaign_id}/bulk_create_ads_by_inventory_reference",
+					"PUT":		"/ad_campaign/{campaign_id}/bulk_update_ads_bid_by_inventory_reference",
+					"DELETE":	"/ad_campaign/{campaign_id}/bulk_delete_ads_by_inventory_reference"
+				},
+				"fakeMethods": {
+					"PUT": 		"POST",
+					"DELETE": 	"POST"
+				}
+			},
+			"byListingId": {
+				"params": 	["campaign_id", "listingIds"],
+				"body": 	["bidPercentage", "listingId"],
+				"methods": {
+					"POST":		"/ad_campaign/{campaign_id}/bulk_create_ads_by_listing_id",
+					"PUT":		"/ad_campaign/{campaign_id}/bulk_update_ads_bid_by_listing_id",
+					"DELETE":	"/ad_campaign/{campaign_id}/bulk_delete_ads_by_listing_id"
+				},
+				"fakeMethods": {
+					"PUT": 		"POST",
+					"DELETE": 	"POST"
+				}
+			}
+		}
+	},
+	"campaign": false,
+	"promotion": {
+		"params": 		["promotion_id"],
+		"query": 		["limit", "marketplace_id", "offset", "promotion_status", "q", "sort"],
+		"methods": {
+			"GET": 		"/item_promotion/{promotion_id}",
+			"POST": 	"/item_promotion",
+			"PUT": 		"/item_promotion/{promotion_id}",
+			"DELETE": 	"/item_promotion/{promotion_id}"
+		},
+		"resources": {
+			"pause": 	{ 
+				"params": 		["promotion_id"],
+				"methods": {
+					"POST": 	"/promotion/{promotion_id}/pause"
+				}
+			},
+			"resume": 	{ 
+				"params": 		["promotion_id"],
+				"methods": {
+					"POST": 	"/promotion/{promotion_id}/resume"
+				}
+			}
+		}
+	},
+	"summary": {
+		"params": 		[],
+		"query": 		["marketplace_id"],
+		"methods": {
+			"GET": 		"/item_promotion/{promotion_id}"
+		}
+	}
+}

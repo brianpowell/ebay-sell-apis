@@ -1,0 +1,80 @@
+{
+	"item": {
+		"params": 		["sku"],
+		"query": 		["limit", "offset"],
+		"body":			["availability", "condition", "conditionDescription", "packageWeightAndSize", "product", "sku"],
+		"methods": {
+			"ALL": 		"/sell/inventory/v1/inventory_item/{sku}"
+		},
+		"fakeMethods": {
+			"POST": "PUT"
+		}
+	},
+	"itemBulk": {
+		"params": 		[],
+		"body":			["offers"],
+		"methods": {
+			"POST": 	"/sell/inventory/v1/bulk_update_price_quantity"
+		}
+	},
+	"itemGroup": {
+		"params": 		["inventory_item_group_key"],
+		"body":			["aspects", "description", "imageUrls", "inventoryItemGroupKey", "subtitle", "title", "variantSKUs", "variesBy"],
+		"methods": {
+			"ALL": 		"/sell/inventory/v1/inventory_item_group/{inventory_item_group_key}"
+		}
+	},
+	"location": {
+		"params": 		["merchant_location_key"],
+		"query": 		["limit", "offset"],
+		"body":			["address", "geoCoordinates", "locationAdditionalInformation", "locationInstructions", "locationType", "locationWebUrl", "merchantLocationSTatus", "name", "operatingHours", "phone", "specialHours"],
+		"methods": {
+			"GET": 		"/sell/inventory/v1/location/{merchant_location_key}",
+			"POST": 	"/sell/inventory/v1/location/{merchant_location_key}",
+			"PUT": 		"/sell/inventory/v1/location/{merchant_location_key}/update_location_details",
+			"DELETE": 	"/sell/inventory/v1/location/{merchant_location_key}"
+		},
+		"resources": {
+			"disable": 	{ 
+				"params": 		["merchant_location_key"],
+				"methods": {
+					"POST": 	"/sell/inventory/v1/location/{merchant_location_key}/disable"
+				}
+			},
+			"enable": 	{ 
+				"params": 		["merchant_location_key"],
+				"methods": {
+					"POST": 	"/sell/inventory/v1/location/{merchant_location_key}/enable"
+				}
+			}
+		}
+	},
+	"offer": {
+		"params": 		["offer_id"],
+		"query": 		["format", "limit", "marketplace_id", "offset", "sku"],
+		"body":			["availableQuantity", "categoryId", "format", "listingDescription", "listingPolicies", "marketplaceId", "merchantLocationKey", "pricingSummary", "quantityLimitPerBuyer", "sku", "storeCategoryNames", "tax"],
+		"methods": {
+			"ALL": 		"/sell/inventory/v1/offer/{offer_id}"
+		},
+		"resources": {
+			"publish": 	{ 
+				"params": 		["offer_id"],
+				"methods": {
+					"POST": 	"/sell/inventory/v1/offer/{offer_id}/publish"
+				}
+			}
+		}
+	},
+	"listingFees": {
+		"params":		[],
+		"methods": {
+			"POST": "/sell/inventory/v1/offer/get_listing_fees"
+		}
+	},
+	"productCompatibility": {
+		"params":		["sku"],
+		"methods": {
+			"POST": "/sell/inventory/v1/inventory_item/{sku}/product_compatibility"
+		}
+	}
+}

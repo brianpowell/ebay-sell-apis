@@ -1,0 +1,14 @@
+{
+	"order": {
+		"params": 		["orderId"],
+		"methods": {
+			"GET": 		"/order/{orderId}"
+		}
+	},
+	"shippingFulfillment": {
+		"params": 		["orderId", "fulfillmentId"],
+		"methods": {
+			"POST": 	"/order/{orderId}/shipping_fulfillment/{fulfillmentId}"
+		}
+	}
+}
