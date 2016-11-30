@@ -112,7 +112,7 @@ eBay {
      buildOperatingHours: [Function],
      buildSpecialHours: [Function],
      buildInterval: [Function],
-     buildOffer: [Function: _buildOffer],
+     buildOffer: [Function],
      buildListingPolicy: [Function],
      buildPricingSummary: [Function],
      buildShippingCostOverrides: [Function],
