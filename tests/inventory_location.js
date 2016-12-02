@@ -16,16 +16,18 @@ let ebay = new eBay( ebay_config );
 /*
 Inventory Location Testing
 */
+let address = ebay.inventory.buildAddress({
+	    "addressLine1": "1415 Central Parkway",
+	    "addressLine2": "First Floor",
+	    "city": "Cincinnati",
+	    "stateOrProvince": "OH",
+	    "postalCode": "45214"
+})
+
 let loc_key = "location-" + String( Date.now() )
 let location = ebay.inventory.buildLocation({
 		"merchant_location_key": 	loc_key,
-	    "location": 				ebay.inventory.buildAddress( {
-											    "addressLine1": "1415 Central Parkway",
-											    "addressLine2": "First Floor",
-											    "city": "Cincinnati",
-											    "stateOrProvince": "OH",
-											    "postalCode": "45214"
-											}),
+	    "location": 				address,
 	    "locationInstructions": 	"Come around back",
 	    "name": 					"HQ",
 	    "merchantLocationStatus": 	"ENABLED",
