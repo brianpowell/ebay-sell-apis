@@ -2,7 +2,7 @@
 	"item": {
 		"params": 		["sku"],
 		"query": 		["limit", "offset"],
-		"body":			["availability", "condition", "conditionDescription", "packageWeightAndSize", "product", "sku"],
+		"body":			["availability", "condition", "conditionDescription", "packageWeightAndSize", "product"],
 		"methods": {
 			"ALL": 		"/sell/inventory/v1/inventory_item/{sku}"
 		},
@@ -19,20 +19,29 @@
 	},
 	"itemGroup": {
 		"params": 		["inventory_item_group_key"],
-		"body":			["aspects", "description", "imageUrls", "inventoryItemGroupKey", "subtitle", "title", "variantSKUs", "variesBy"],
+		"body":			["aspects", "description", "imageUrls", "subtitle", "title", "variantSKUs", "variesBy"],
 		"methods": {
 			"ALL": 		"/sell/inventory/v1/inventory_item_group/{inventory_item_group_key}"
+		},
+		"fakeMethods": {
+			"POST": "PUT"
 		}
 	},
 	"location": {
 		"params": 		["merchant_location_key"],
 		"query": 		["limit", "offset"],
-		"body":			["address", "geoCoordinates", "locationAdditionalInformation", "locationInstructions", "locationType", "locationWebUrl", "merchantLocationSTatus", "name", "operatingHours", "phone", "specialHours"],
+		"body":			{
+			"POST":	["location", "locationAdditionalInformation", "locationInstructions", "locationType", "locationWebUrl", "merchantLocationStatus", "name", "operatingHours", "phone", "specialHours"],
+			"PUT":	["locationAdditionalInformation", "locationInstructions", "locationType", "locationWebUrl", "name", "operatingHours", "phone", "specialHours"]
+		},
 		"methods": {
 			"GET": 		"/sell/inventory/v1/location/{merchant_location_key}",
 			"POST": 	"/sell/inventory/v1/location/{merchant_location_key}",
 			"PUT": 		"/sell/inventory/v1/location/{merchant_location_key}/update_location_details",
 			"DELETE": 	"/sell/inventory/v1/location/{merchant_location_key}"
+		},
+		"fakeMethods": {
+			"PUT": 		"POST"
 		},
 		"resources": {
 			"disable": 	{ 
@@ -54,7 +63,10 @@
 		"query": 		["format", "limit", "marketplace_id", "offset", "sku"],
 		"body":			["availableQuantity", "categoryId", "format", "listingDescription", "listingPolicies", "marketplaceId", "merchantLocationKey", "pricingSummary", "quantityLimitPerBuyer", "sku", "storeCategoryNames", "tax"],
 		"methods": {
-			"ALL": 		"/sell/inventory/v1/offer/{offer_id}"
+			"GET": 		"/sell/inventory/v1/offer/{offer_id}",
+			"POST": 	"/sell/inventory/v1/offer",
+			"PUT": 		"/sell/inventory/v1/offer/{offer_id}",
+			"DELETE": 	"/sell/inventory/v1/offer/{offer_id}"
 		},
 		"resources": {
 			"publish": 	{ 

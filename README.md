@@ -9,6 +9,9 @@ The eBay APIs do not operate on a RESTful approach - mixing things like `POST` w
 So... I attempted to make this bit cleaner by mapping the eBay Sell APIs into a dynamically generated interface that "attempts" to make RESTful sense. Forgive, if you hate it.
 
 
+http://developer.ebay.com/Devzone/rest/ebay-rest/content/rest-request-components.html
+
+
 ### Example: 
 ```javascript
 
