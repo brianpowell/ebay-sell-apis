@@ -18,6 +18,9 @@ let ebay = new eBay( ebay_config );
 Inventory Item Testing
 */
 let product = ebay.inventory.buildProduct({ 
+	aspects: 		{
+		brand: [ "Patagonia" ]
+	},
 	title: 			"My Test Item", 
 	subtitle: 		"Item from CompeleteSet",
 	brand: 			"Marvel", 
@@ -52,7 +55,7 @@ async.waterfall([
 		})
 	},
 	function( cb ) {
-		// Update Inventory Items
+		// Update Inventory Item
 		item.sku = sku;
 		item.title += " (Updated)";
 		ebay.inventory.item.put( item, function( err, item ) {
