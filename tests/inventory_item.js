@@ -13,7 +13,6 @@ let ebay_config = {
 // Let's Roll!
 let ebay = new eBay( ebay_config );
 
-
 /*
 Inventory Item Testing
 */
@@ -22,7 +21,7 @@ let product = ebay.inventory.buildProduct({
 		brand: [ "Patagonia" ]
 	},
 	title: 			"My Test Item", 
-	subtitle: 		"Item from CompeleteSet",
+	subtitle: 		"Item from Store",
 	brand: 			"Marvel", 
 	description: 	"This is a test toy", 
 	imageUrls: 		[ "http://i.ebayimg.com/images/i/152196556219-0-1/s-9005.jpg" ]
@@ -42,15 +41,15 @@ let item = ebay.inventory.buildItem({
 async.waterfall([
 	function( cb ) {
 		// Create Inventory Item
-		ebay.inventory.item.post( item, function( err, item ) {
-			debug("POST inventory.item Response", err, item );
+		ebay.inventory.item.post( item, function( err, item, headers ) {
+			debug("POST inventory.item Response", err, item, headers );
 			cb( err );
 		})
 	},
 	function( cb ) {
 		// Get Inventory Items
-		ebay.inventory.item.get( {}, function( err, items ) {
-			debug("GET inventory.item Response", err, items );
+		ebay.inventory.item.get( {}, function( err, items, headers ) {
+			debug("GET inventory.item Response", err, items, headers );
 			cb( err );
 		})
 	},
@@ -58,15 +57,15 @@ async.waterfall([
 		// Update Inventory Item
 		item.sku = sku;
 		item.title += " (Updated)";
-		ebay.inventory.item.put( item, function( err, item ) {
-			debug("PUT inventory.item Response", err, item );
+		ebay.inventory.item.put( item, function( err, item, headers ) {
+			debug("PUT inventory.item Response", err, item, headers );
 			cb( err );
 		})
 	},
 	function( cb ) {
 		// Get Single Inventory Items
-		ebay.inventory.item.get( { sku: sku }, function( err, item ) {
-			debug("GET Single inventory.item Response", err, item );
+		ebay.inventory.item.get( { sku: sku }, function( err, item, headers ) {
+			debug("GET Single inventory.item Response", err, item, headers );
 			cb( err );
 		})
 	}
@@ -75,7 +74,7 @@ async.waterfall([
 		return debug("ERROR", err);
 	}
 	// Clean up
-	ebay.inventory.item.delete( { sku: sku }, function( err, item ) {
-		debug("DELETE inventory.item Response", err, item );
+	ebay.inventory.item.delete( { sku: sku }, function( err, item, headers ) {
+		debug("DELETE inventory.item Response", err, item, headers );
 	})
 });

@@ -36,11 +36,11 @@ let loc_key = "location-" + String( Date.now() )
 let location = ebay.inventory.buildLocation({
 		"merchant_location_key": 	loc_key,
 	    "location": 				ebay.inventory.buildAddress( {
-											    "addressLine1": "500 West Fifth St",
-											    "city": "Cincinnati",
-											    "stateOrProvince": "OH",
-											    "postalCode": "45214"
-											}),
+									    "addressLine1": "500 West Fifth St",
+									    "city": "Cincinnati",
+									    "stateOrProvince": "OH",
+									    "postalCode": "45214"
+									}),
 	    "locationInstructions": 	"See the front desk",
 	    "name": 					"HQ",
 	    "merchantLocationStatus": 	"ENABLED",
@@ -52,7 +52,7 @@ let location = ebay.inventory.buildLocation({
 /*
 Inventory Offer Testing
 */
-let offer_key = "offer-" + String( Date.now() )
+let offer_key = ""
 let offer = ebay.inventory.buildOffer({
 	categoryId: "178086",
 	listingDescription: "Listing Description...",
@@ -72,29 +72,31 @@ let offer = ebay.inventory.buildOffer({
 async.waterfall([
 	function( cb ) {
 		// Create Inventory Location
-		ebay.inventory.location.post( location, function( err, loc ) {
-			debug("POST Inventory Location Response", err, loc );
+		ebay.inventory.location.post( location, function( err, loc, headers ) {
+			debug("POST Inventory Location Response", err, loc, headers );
 			cb( err );
 		})
 	},
 	function( cb ) {
 		// Create Inventory Item
-		ebay.inventory.item.post( item, function( err, item ) {
-			debug("POST inventory.item Response", err, item );
+		ebay.inventory.item.post( item, function( err, item, headers ) {
+			debug("POST inventory.item Response", err, item, headers );
 			cb( err );
 		})
 	},
 	function( cb ) {
 		// Create Inventory Offer
-		ebay.inventory.offer.post( offer, function( err, loc ) {
-			debug("POST inventory.offer Response", err, loc );
+		ebay.inventory.offer.post( offer, function( err, loc, headers ) {
+			debug("POST inventory.offer Response", err, loc, headers );
 			cb( err );
 		})
 	},
 	function( cb ) {
 		// Get Inventory Offers
-		ebay.inventory.offer.get( {}, function( err, locs ) {
-			debug("GET inventory.offer Response", err, locs );
+		ebay.inventory.offer.get( { sku: sku }, function( err, locs, headers ) {
+			debug("GET inventory.offer Response", err, locs, headers );
+			let offer = _.first( locs.offers );
+			offer_key = offer.offerId;
 			cb( err );
 		})
 	},
@@ -102,22 +104,22 @@ async.waterfall([
 		// Update Inventory Offer
 		offer.offer_id = offer_key;
 		offer.listingDescription += " (Updated)";
-		ebay.inventory.offer.put( offer, function( err, loc ) {
-			debug("PUT inventory.offer Response", err, loc );
+		ebay.inventory.offer.put( offer, function( err, loc, headers ) {
+			debug("PUT inventory.offer Response", err, loc, headers );
 			cb( err );
 		})
 	},
 	function( cb ) {
 		// Get Single Inventory Offer
-		ebay.inventory.offer.get( { offer_id: offer_key }, function( err, loc ) {
-			debug("GET Single inventory.offer Response", err, loc );
+		ebay.inventory.offer.get( { offer_id: offer_key }, function( err, loc, headers ) {
+			debug("GET Single inventory.offer Response", err, loc, headers );
 			cb( err );
 		})
 	},
 	function( cb ) {
 		// Publish Inventory Offer
-		ebay.inventory.offer.publish.post( { offer_id: offer_key }, function( err, loc ) {
-			debug("POST Publish inventory.offer Response", err, loc );
+		ebay.inventory.offer.publish.post( { offer_id: offer_key }, function( err, loc, headers ) {
+			debug("POST Publish inventory.offer Response", err, loc, headers );
 			cb( err );
 		})
 	}
@@ -126,13 +128,13 @@ async.waterfall([
 		return debug("ERROR", err);
 	}
 	// Clean up
-	ebay.inventory.offer.delete( { offer_id: offer_key }, function( err, loc ) {
-		debug("DELETE inventory.offer Response", err, loc );
+	ebay.inventory.offer.delete( { offer_id: offer_key }, function( err, loc, headers ) {
+		debug("DELETE inventory.offer Response", err, loc, headers, headers );
 	})
-	ebay.inventory.item.delete( { sku: sku }, function( err, item ) {
-		debug("DELETE inventory.item Response", err, item );
+	ebay.inventory.item.delete( { sku: sku }, function( err, item, headers ) {
+		debug("DELETE inventory.item Response", err, item, headers );
 	})
-	ebay.inventory.location.delete( { merchant_location_key: loc_key }, function( err, loc ) {
-		debug("DELETE Inventory Location Response", err, loc );
+	ebay.inventory.location.delete( { merchant_location_key: loc_key }, function( err, loc, headers ) {
+		debug("DELETE Inventory Location Response", err, loc, headers );
 	})
 });

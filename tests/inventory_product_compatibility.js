@@ -34,7 +34,7 @@ let item = ebay.inventory.buildItem({
 	// Product
 	product: 				ebay.inventory.buildProduct({ 
 			title: 			"My Test Item", 
-			subtitle: 		"Item from CompeleteSet",
+			subtitle: 		"Item from Store",
 			brand: 			"Marvel", 
 			description: 	"This is a test toy", 
 			imageUrls: 		[ "http://i.ebayimg.com/images/i/152196556219-0-1/s-9005.jpg" ]
