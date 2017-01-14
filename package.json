@@ -1,6 +1,6 @@
 {
   "name": "ebay-sell-apis",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Sell APIs for eBay Integrations",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "async": "^2.1.2",
     "debug": "^2.3.3",
     "lodash": "^4.17.2",
+    "qs": "^6.3.0",
     "request": "^2.79.0"
   }
 }

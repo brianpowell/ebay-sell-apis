@@ -79,14 +79,22 @@
 	},
 	"listingFees": {
 		"params":		[],
+		"body":			["offers"],
 		"methods": {
 			"POST": "/sell/inventory/v1/offer/get_listing_fees"
+		},
+		"fakeMethods": {
+			"POST": 	"GET"
 		}
 	},
 	"productCompatibility": {
 		"params":		["sku"],
+		"body":			["compatibleProducts"],
 		"methods": {
-			"POST": "/sell/inventory/v1/inventory_item/{sku}/product_compatibility"
+			"ALL": "/sell/inventory/v1/inventory_item/{sku}/product_compatibility"
+		},
+		"fakeMethods": {
+			"POST": 	"PUT"
 		}
 	}
 }

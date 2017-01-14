@@ -16,24 +16,21 @@ let ebay = new eBay( ebay_config );
 /*
 Inventory Location Testing
 */
-let address = ebay.inventory.buildAddress({
-	    "addressLine1": "1415 Central Parkway",
-	    "addressLine2": "First Floor",
-	    "city": "Cincinnati",
-	    "stateOrProvince": "OH",
-	    "postalCode": "45214"
-})
-
 let loc_key = "location-" + String( Date.now() )
 let location = ebay.inventory.buildLocation({
-		"merchant_location_key": 	loc_key,
-	    "location": 				address,
-	    "locationInstructions": 	"Come around back",
-	    "name": 					"HQ",
-	    "merchantLocationStatus": 	"ENABLED",
-	    "locationTypes": 			["WAREHOUSE"],
-	    "operatingHours": 			_.map( ebay.enums.days, function(day){ return ebay.inventory.buildHour("operating", day, ebay.inventory.buildInterval( "09:00:00", "18:00:00") );  }),
-	    "specialHours": 			[]
+	"merchant_location_key": 	loc_key,
+    "location": 				ebay.inventory.buildAddress({
+								    "addressLine1": "500 West Fifth St",
+								    "city": "Cincinnati",
+								    "stateOrProvince": "OH",
+								    "postalCode": "45214"
+								}),
+    "locationInstructions": 	"Come around back",
+    "name": 					"HQ",
+    "merchantLocationStatus": 	"ENABLED",
+    "locationTypes": 			["WAREHOUSE"],
+    "operatingHours": 			_.map( ebay.enums.days, function(day){ return ebay.inventory.buildHour("operating", day, ebay.inventory.buildInterval( "09:00:00", "18:00:00") );  }),
+    "specialHours": 			[]
 });
 
 async.waterfall([
@@ -52,7 +49,7 @@ async.waterfall([
 		})
 	},
 	function( cb ) {
-		// Update Inventory Locations
+		// Update Inventory Location
 		location.merchant_location_key = loc_key;
 		location.name += " (Updated)";
 		ebay.inventory.location.put( location, function( err, loc ) {
@@ -63,7 +60,7 @@ async.waterfall([
 	function( cb ) {
 		// Get Single Inventory Location
 		ebay.inventory.location.get( { merchant_location_key: loc_key }, function( err, loc ) {
-			debug("GET Single Inventory Locations Response", err, loc );
+			debug("GET Single Inventory Location Response", err, loc );
 			cb( err );
 		})
 	}
