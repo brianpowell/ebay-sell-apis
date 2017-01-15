@@ -4,10 +4,10 @@
 		"query": 		["campaign_id", "listing_ids", "limit", "offset"],
 		"body": 		["bidPercentage", "listingId"],
 		"methods": {
-			"GET": 		"/sell/account/v1/ad_campaign/{campaign_id}/ad/{ad_id}",
-			"POST": 	"/sell/account/v1/ad_campaign/{campaign_id}/ad",
-			"PUT": 		"/sell/account/v1/ad_campaign/{campaign_id}/ad/{ad_id}/update_bid",
-			"DELETE": 	"/sell/account/v1/ad_campaign/{campaign_id}/ad/{ad_id}"
+			"GET": 		"/sell/marketing/v1/ad_campaign/{campaign_id}/ad/{ad_id}",
+			"POST": 	"/sell/marketing/v1/ad_campaign/{campaign_id}/ad",
+			"PUT": 		"/sell/marketing/v1/ad_campaign/{campaign_id}/ad/{ad_id}/update_bid",
+			"DELETE": 	"/sell/marketing/v1/ad_campaign/{campaign_id}/ad/{ad_id}"
 		},
 		"fakeMethods": {
 			"PUT": "POST"
@@ -18,10 +18,10 @@
 				"query":    ["inventoryReferenceId", "inventoryReferenceType"],
 				"body": 	["bidPercentage", "inventoryReferenceId", "inventoryReferenceType"],
 				"methods": {
-					"GET":		"/sell/account/v1/ad_campaign/{campaign_id}/get_ads_by_inventory_reference",
-					"POST": 	"/sell/account/v1/ad_campaign/{campaign_id}/bulk_create_ads_by_inventory_reference",
-					"PUT":		"/sell/account/v1/ad_campaign/{campaign_id}/bulk_update_ads_bid_by_inventory_reference",
-					"DELETE":	"/sell/account/v1/ad_campaign/{campaign_id}/bulk_delete_ads_by_inventory_reference"
+					"GET":		"/sell/marketing/v1/ad_campaign/{campaign_id}/get_ads_by_inventory_reference",
+					"POST": 	"/sell/marketing/v1/ad_campaign/{campaign_id}/bulk_create_ads_by_inventory_reference",
+					"PUT":		"/sell/marketing/v1/ad_campaign/{campaign_id}/bulk_update_ads_bid_by_inventory_reference",
+					"DELETE":	"/sell/marketing/v1/ad_campaign/{campaign_id}/bulk_delete_ads_by_inventory_reference"
 				},
 				"fakeMethods": {
 					"PUT": 		"POST",
@@ -32,9 +32,9 @@
 				"params": 	["campaign_id", "listingIds"],
 				"body": 	["bidPercentage", "listingId"],
 				"methods": {
-					"POST":		"/sell/account/v1/ad_campaign/{campaign_id}/bulk_create_ads_by_listing_id",
-					"PUT":		"/sell/account/v1/ad_campaign/{campaign_id}/bulk_update_ads_bid_by_listing_id",
-					"DELETE":	"/sell/account/v1/ad_campaign/{campaign_id}/bulk_delete_ads_by_listing_id"
+					"POST":		"/sell/marketing/v1/ad_campaign/{campaign_id}/bulk_create_ads_by_listing_id",
+					"PUT":		"/sell/marketing/v1/ad_campaign/{campaign_id}/bulk_update_ads_bid_by_listing_id",
+					"DELETE":	"/sell/marketing/v1/ad_campaign/{campaign_id}/bulk_delete_ads_by_listing_id"
 				},
 				"fakeMethods": {
 					"PUT": 		"POST",
@@ -48,22 +48,22 @@
 		"params": 		["promotion_id"],
 		"query": 		["limit", "marketplace_id", "offset", "promotion_status", "q", "sort"],
 		"methods": {
-			"GET": 		"/sell/account/v1/item_promotion/{promotion_id}",
-			"POST": 	"/sell/account/v1/item_promotion",
-			"PUT": 		"/sell/account/v1/item_promotion/{promotion_id}",
-			"DELETE": 	"/sell/account/v1/item_promotion/{promotion_id}"
+			"GET": 		"/sell/marketing/v1/item_promotion/{promotion_id}",
+			"POST": 	"/sell/marketing/v1/item_promotion",
+			"PUT": 		"/sell/marketing/v1/item_promotion/{promotion_id}",
+			"DELETE": 	"/sell/marketing/v1/item_promotion/{promotion_id}"
 		},
 		"resources": {
 			"pause": 	{ 
 				"params": 		["promotion_id"],
 				"methods": {
-					"POST": 	"/sell/account/v1/promotion/{promotion_id}/pause"
+					"POST": 	"/sell/marketing/v1/promotion/{promotion_id}/pause"
 				}
 			},
 			"resume": 	{ 
 				"params": 		["promotion_id"],
 				"methods": {
-					"POST": 	"/sell/account/v1/promotion/{promotion_id}/resume"
+					"POST": 	"/sell/marketing/v1/promotion/{promotion_id}/resume"
 				}
 			}
 		}
@@ -72,7 +72,7 @@
 		"params": 		[],
 		"query": 		["marketplace_id"],
 		"methods": {
-			"GET": 		"/sell/account/v1/item_promotion/{promotion_id}"
+			"GET": 		"/sell/marketing/v1/item_promotion/{promotion_id}"
 		}
 	}
 }
