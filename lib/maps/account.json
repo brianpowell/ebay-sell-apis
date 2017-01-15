@@ -3,13 +3,13 @@
 		"params": 		["fulfillment_policy_id"],
 		"query": 		["marketplace_id"],
 		"methods": {
-			"ALL": 		"/fulfillment_policy/{fulfillment_policy_id}"
+			"ALL": 		"/sell/account/v1/fulfillment_policy/{fulfillment_policy_id}"
 		},
 		"resources": {
 			"byName": 	{ 
 				"query": 		["marketplace_id", "name"],
 				"methods": {
-					"GET": 		"/fulfillment_policy/get_by_policy_name"
+					"GET": 		"/sell/account/v1/fulfillment_policy/get_by_policy_name"
 				}
 			}
 		}
@@ -19,13 +19,13 @@
 		"params": 		["payment_policy_id"],
 		"query": 		["marketplace_id"],
 		"methods": {
-			"ALL": 		"/payment_policy/{payment_policy_id}"
+			"ALL": 		"/sell/account/v1/payment_policy/{payment_policy_id}"
 		},
 		"resources": {
 			"byName": 	{ 
 				"query": 		["marketplace_id", "name"],
 				"methods": {
-					"GET": 		"/payment_policy/get_by_policy_name"
+					"GET": 		"/sell/account/v1/payment_policy/get_by_policy_name"
 				}
 			}
 		}
@@ -37,10 +37,10 @@
 		}
 	},
 	"returnPolicy": {
-		"params": 		["return_policy_d"],
+		"params": 		["return_policy_id"],
 		"query": 		["marketplace_id"],
 		"methods": {
-			"ALL": 		"/return_policy/{return_policy_d}"
+			"ALL": 		"/sell/account/v1/return_policy/{return_policy_id}"
 		},
 		"resources": {
 			"byName": 	{ 
@@ -55,7 +55,7 @@
 		"params": 		["country_code", "jurisdiction_id"],
 		"query": 		["country_code"],
 		"methods": {
-			"ALL": 		"/sales_tax/{country_code}/{jurisdiction_id}"
+			"ALL": 		"/sell/account/v1/sales_tax/{country_code}/{jurisdiction_id}"
 		}
 	}
 }

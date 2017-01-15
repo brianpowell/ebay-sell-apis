@@ -2,13 +2,13 @@
 	"order": {
 		"params": 		["orderId"],
 		"methods": {
-			"GET": 		"/order/{orderId}"
+			"GET": 		"/sell/account/v1/order/{orderId}"
 		}
 	},
 	"shippingFulfillment": {
 		"params": 		["orderId", "fulfillmentId"],
 		"methods": {
-			"POST": 	"/order/{orderId}/shipping_fulfillment/{fulfillmentId}"
+			"POST": 	"/sell/account/v1/order/{orderId}/shipping_fulfillment/{fulfillmentId}"
 		}
 	}
 }
